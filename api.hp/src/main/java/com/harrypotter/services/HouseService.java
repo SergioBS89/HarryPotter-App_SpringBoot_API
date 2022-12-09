@@ -17,4 +17,6 @@ public class HouseService {
     public List<House> findAll(){
         return houseRepository.findAll();
     }
+    public House findById(Integer id){return houseRepository.findById(id).get();
+    }
 }

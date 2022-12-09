@@ -35,17 +35,20 @@ public class Wizard {
     @Column(name = "home_address")
     private String homeAddress;
     private String profession;
+    private String wander;
+    private String house;
+    private String bibliography;
     private String picture;
+
 
     @ManyToOne
     @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private House house;
-
-
+    private House h;
 }
 
 
+//WIZARD
 
 //    @JoinTable(name = "wizard_house", joinColumns = {
 //            @JoinColumn(name = "house_id", referencedColumnName = "id") }, inverseJoinColumns = {
@@ -55,3 +58,12 @@ public class Wizard {
 ////    @JsonIgnore
 //    private Set<House> houses = new HashSet<>();
 
+//    @Column(name = "w")
+//    private Integer wizardsHouse; //(This name has to be the same as mapped by
+
+//HOUSE
+//@ManyToMany(fetch = FetchType.LAZY, cascade = {
+//        CascadeType.PERSIST, CascadeType.MERGE
+//}, mappedBy = "houses")
+////@JsonIgnore
+//private Set<Wizard> wizard = new HashSet<>();
