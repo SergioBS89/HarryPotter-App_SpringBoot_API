@@ -21,28 +21,25 @@ import org.hibernate.annotations.NotFound;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class House {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+
+    @OneToMany(mappedBy = "house",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Wizard> students = new HashSet<>();
 //    @Column(name = "w")
 //    private Integer wizardsHouse; //(This name has to be the same as mapped by
 
-@ManyToMany(fetch = FetchType.LAZY, cascade = {
-        CascadeType.PERSIST, CascadeType.MERGE
-}, mappedBy = "houses")
-//@JsonIgnore
-private Set<Wizard> wizard = new HashSet<>();
+//@ManyToMany(fetch = FetchType.LAZY, cascade = {
+//        CascadeType.PERSIST, CascadeType.MERGE
+//}, mappedBy = "houses")
+////@JsonIgnore
+//private Set<Wizard> wizard = new HashSet<>();
+
+
 }
 
-//    private String surname;
-//    private Integer age;
-//    private String gender;
-//    private String location;
-//    private String profession;
-//    private String picture;
-//    @OneToMany(mappedBy = "wizardsHouse",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private List<Wizard> students;
+

@@ -30,20 +30,28 @@ public class Wizard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private Integer age;
+    private String gender;
+    @Column(name = "home_address")
+    private String homeAddress;
+    private String profession;
+    private String picture;
 
-    @JoinTable(name = "wizard_house", joinColumns = {
-            @JoinColumn(name = "house_id", referencedColumnName = "id") }, inverseJoinColumns = {
-            @JoinColumn(name = "wizard_id", referencedColumnName = "id")
-    })
-    @ManyToMany(fetch = FetchType.LAZY)
-//    @JsonIgnore
-    private Set<House> houses = new HashSet<>();
-    }
+    @ManyToOne
+    @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
+    @JsonIgnore
+    private House house;
 
-//    private String color;
-//    private String picture;
 
-// relation with wizard house
+}
 
-//    @ManyToOne
-//    @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
+
+
+//    @JoinTable(name = "wizard_house", joinColumns = {
+//            @JoinColumn(name = "house_id", referencedColumnName = "id") }, inverseJoinColumns = {
+//            @JoinColumn(name = "wizard_id", referencedColumnName = "id")
+//    })
+//    @ManyToMany(fetch = FetchType.LAZY)
+////    @JsonIgnore
+//    private Set<House> houses = new HashSet<>();
+
