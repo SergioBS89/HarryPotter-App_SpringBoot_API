@@ -28,5 +28,5 @@ public class Pet {
     @ManyToOne
     @JoinColumn(name = "material_pet")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagics ms;
+    private MaterialMagic ms;
 }

@@ -11,20 +11,21 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Broom {
+public class Horocruxes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
     private String name;
+    private String info;
     private String picture;
+
     @ManyToOne
-    @JoinColumn(name = "material_broom")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "secret_hollows")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagic mb;
+    private MaterialMagic sh;
 }

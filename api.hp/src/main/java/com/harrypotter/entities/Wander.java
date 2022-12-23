@@ -20,7 +20,6 @@ public class Wander {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
 
     private String name;
@@ -32,5 +31,5 @@ public class Wander {
     @ManyToOne
     @JoinColumn(name = "material_wander")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagics mw;
+    private MaterialMagic mw;
 }

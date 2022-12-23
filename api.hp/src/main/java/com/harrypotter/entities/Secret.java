@@ -16,24 +16,17 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "material_magic")
-public class MaterialMagics {
+public class Secret {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "use")
-    private String use;
 
-//Relation with  pets
-    @OneToMany(mappedBy = "ms",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Pet> list_pets;
 
-    //Relation with  wanders
-    @OneToMany(mappedBy = "mw",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Wander> list_wanders;
+    //Relation with horocruxes
+    @OneToMany(mappedBy = "sh",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Horocruxes> list_horocruxes;
 
-    //Relation with  broom
-    @OneToMany(mappedBy = "mb",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Broom> list_broom;
-
+    //Relation with
+    @OneToMany(mappedBy = "sr",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Reliques> list_reliques;
 }

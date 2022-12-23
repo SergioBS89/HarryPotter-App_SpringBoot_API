@@ -20,4 +20,7 @@ public class WizardService {
     public Wizard findByID(Integer id){
         return iWizardRepository.findById(id).get();
     };
+    public Wizard findByName(String name){
+        return iWizardRepository.findByName(name);
+    }
 }
