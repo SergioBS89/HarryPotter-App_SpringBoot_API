@@ -10,7 +10,7 @@ insert into house (name) VALUES ('Ravenclaw');
 --Wizards
 insert into wizard (name, house, wizards_house) values ('Harry Potter','http://localhost:8080/house/1', 1);
 --insert into wizard (name, wizards_house) values ('Ron Wesley', 1);
---insert into wizard (name, wizards_house) values ('Draco Malfoy', 2);
+insert into wizard (name, wizards_house) values ('Draco Malfoy', 2);
 
 --Material
 insert into material_magic (pets, wanders, brooms, secrets) values ('http://localhost:8080/pet','http://localhost:8080/wander','http://localhost:8080/broom','http://localhost:8080/secret');

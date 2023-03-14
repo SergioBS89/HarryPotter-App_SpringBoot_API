@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IWizardRepository extends JpaRepository<Wizard,Integer>{
 
-    @Query(value = "SELECT * FROM wizard WHERE name = name", nativeQuery = true)
+    @Query(value = "SELECT * FROM wizard WHERE name = :name", nativeQuery = true)
     public Wizard findByName(String name);
     
 }
