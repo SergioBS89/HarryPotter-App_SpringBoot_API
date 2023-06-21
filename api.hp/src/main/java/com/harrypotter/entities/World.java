@@ -19,12 +19,11 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class World {
-
-//    Introduce urls of each class
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String wizards;
+    private String mortifagos;
     private String creatures;
-    private String magic_materials;
+    private String material_magic;
 }

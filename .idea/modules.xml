@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/one_to_many.iml" filepath="$PROJECT_DIR$/.idea/one_to_many.iml" />
-      <module fileurl="file://$PROJECT_DIR$/api.hp/spring-airline.iml" filepath="$PROJECT_DIR$/api.hp/spring-airline.iml" />
     </modules>
   </component>
 </project>

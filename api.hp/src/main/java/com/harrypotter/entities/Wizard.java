@@ -35,16 +35,27 @@ public class Wizard {
     @Column(name = "home_address")
     private String homeAddress;
     private String profession;
-    private String wander;
+    private String actor;
     private String house;
     private String bibliography;
+    private String family;
     private String picture;
 
-
+//Relation with houses
     @ManyToOne
     @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
     private House h;
+//Relation with mortifagos
+    @ManyToOne
+    @JoinColumn(name = "wizards_mortifagos")//Name of column (Remember to insert this column in sql)
+    @JsonIgnore
+    private House m;
+    //Relation with houses
+    @ManyToOne
+    @JoinColumn(name = "wizards_family")//Name of column (Remember to insert this column in sql)
+    @JsonIgnore
+    private House f;
 }
 
 

@@ -20,6 +20,7 @@ public class Creatures {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String raze;
+    private String info;
     private String picture;
 
 }

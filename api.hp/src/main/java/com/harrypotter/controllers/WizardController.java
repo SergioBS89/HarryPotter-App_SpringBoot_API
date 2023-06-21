@@ -11,15 +11,15 @@ import com.harrypotter.services.WizardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
-@RequestMapping("/wizard")
+@RequestMapping("/wizards")
 public class WizardController {
     
     @Autowired
     private WizardService wizardService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List <Wizard> findAll(){
 
         return wizardService.findAll();

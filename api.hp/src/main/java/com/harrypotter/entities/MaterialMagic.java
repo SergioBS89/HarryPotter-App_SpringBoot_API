@@ -22,10 +22,11 @@ public class MaterialMagic{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String pets;
     private String wanders;
     private String brooms;
-    private String secrets;
+
+    @Column(name = "special_objects")
+    private String specialObjects;
 
 
 //Relation with  pets
@@ -42,6 +43,6 @@ public class MaterialMagic{
 
     //Relation with secret
 //    @OneToMany(mappedBy = "ms",cascade = CascadeType.ALL,orphanRemoval = true)
-//    private Set<Secret> list_secrets;
+//    private Set<SpecialObjects> list_secrets;
 
 }

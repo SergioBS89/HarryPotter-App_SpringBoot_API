@@ -1,7 +1,7 @@
 package com.harrypotter.controllers;
 
-import com.harrypotter.entities.MaterialMagic;
-import com.harrypotter.services.MaterialService;
+import com.harrypotter.entities.Creatures;
+import com.harrypotter.services.CreaturesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/material_magic")
-public class MaterialController {
+@RequestMapping("/creatures")
+public class CreaturesController {
 
     @Autowired
-    private MaterialService materialService;
+    private CreaturesService creaturesService;
+
     @GetMapping("")
-    public List<MaterialMagic> findAllMaterial(){
-        return materialService.findAll();
+    public List<Creatures> findAllCreatures(){
+        return creaturesService.findAllCreatures();
     }
 }

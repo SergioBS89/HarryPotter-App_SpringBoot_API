@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,9 +23,12 @@ public class Broom {
 
     private Integer id;
     private String name;
+    private String info;
+    private String owner;
     private String picture;
-    @ManyToOne
+
+/*    @ManyToOne
     @JoinColumn(name = "material_broom")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagic mb;
+    private MaterialMagic mb;*/
 }

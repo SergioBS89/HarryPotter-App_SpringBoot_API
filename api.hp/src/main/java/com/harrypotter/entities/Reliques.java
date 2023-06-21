@@ -25,7 +25,7 @@ public class Reliques {
     private String picture;
 
     @ManyToOne
-    @JoinColumn(name = "secret_reliques")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "special_reliques")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
     private MaterialMagic sr;
 }
