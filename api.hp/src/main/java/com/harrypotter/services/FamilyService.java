@@ -1,9 +1,7 @@
 package com.harrypotter.services;
 
 import com.harrypotter.entities.Family;
-import com.harrypotter.entities.Wizard;
 import com.harrypotter.repositories.IFamilyRepository;
-import com.harrypotter.repositories.IWizardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,4 +19,7 @@ public class FamilyService {
     public Family findByID(Integer id){
         return iFamilyRepository.findById(id).get();
     };
+    public Family findByName(String name){
+        return iFamilyRepository.findByName(name);
+    }
 }

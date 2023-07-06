@@ -36,10 +36,13 @@ public class Wizard {
     private String homeAddress;
     private String profession;
     private String actor;
-    private String house;
+    private String housename;
+    private String houseurl;
     private String bibliography;
-    private String family;
     private String picture;
+    private String facemember;
+    private String color;
+    private String familyname;
 
 //Relation with houses
     @ManyToOne

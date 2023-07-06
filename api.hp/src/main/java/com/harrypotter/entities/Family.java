@@ -21,7 +21,6 @@ import java.util.Set;
         private String name;
         private String description;
 
-        private String picture;
     @OneToMany(mappedBy = "f",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Wizard> members = new HashSet<>();
 
