@@ -11,4 +11,6 @@ import java.util.List;
 
 public interface IHouseRepository extends JpaRepository<House,Integer>{
 
+    @Query(value = "SELECT * FROM house WHERE name = :name", nativeQuery = true)
+    public House findByName(String name);
 }

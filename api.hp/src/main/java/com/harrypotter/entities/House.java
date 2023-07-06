@@ -28,7 +28,8 @@ public class House {
 
     private Integer id;
     private String name;
-//    private String picture;
+    private String picture;
+
     @OneToMany(mappedBy = "h",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Wizard> students = new HashSet<>();
 }

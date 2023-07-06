@@ -14,9 +14,15 @@ public class HouseService {
     @Autowired
     private IHouseRepository houseRepository;
 
-    public List<House> findAll(){
+    public List<House> findAll() {
         return houseRepository.findAll();
     }
-    public House findById(Integer id){return houseRepository.findById(id).get();
+
+    public House findById(Integer id) {
+        return houseRepository.findById(id).get();
+    }
+
+    public House findByName(String name) {
+        return houseRepository.findByName(name);
     }
 }

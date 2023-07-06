@@ -37,6 +37,7 @@ public class Wizard {
     private String profession;
     private String actor;
     private String housename;
+    private String housecardpicture;
     private String houseurl;
     private String bibliography;
     private String picture;
