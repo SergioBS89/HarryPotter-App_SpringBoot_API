@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,18 +18,23 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Broom {
+public class Hogwarts {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
-    private String name;
-    private String info;
-    private String owner;
-    private String picture;
 
-/*    @ManyToOne
-    @JoinColumn(name = "material_broom")//Name of column (Remember to insert this column in sql)
+
+    //One to one hogwarts
     @JsonIgnore
-    private MaterialMagic mb;*/
+    @OneToOne(mappedBy = "hogwarts")
+    private Place place;
+
+    //Relation with teachers
+    @OneToMany(mappedBy = "th",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Teacher> hogwartsTeacherList = new HashSet<>();
+
+    //Relation with houses
+    @OneToMany(mappedBy = "hh",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<House> hogwartsHousesList = new HashSet<>();
 }

@@ -9,24 +9,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Pet {
+public class Teacher {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
-    @Column(name = "pet_raze")
-    private String petRaze;
-    private String name;
-    private String picture;
-/*    @ManyToOne
-    @JoinColumn(name = "material_pet")//Name of column (Remember to insert this column in sql)
+
+    @OneToMany(mappedBy = "t",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Wizard> teachers = new HashSet<>();
+
+    //Relation with Hogwarts
+    @ManyToOne
+    @JoinColumn(name = "teacher_hogwarts")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagic ms;*/
+    private Hogwarts th;
 }

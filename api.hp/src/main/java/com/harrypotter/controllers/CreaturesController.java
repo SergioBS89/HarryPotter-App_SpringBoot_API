@@ -16,8 +16,13 @@ public class CreaturesController {
     @Autowired
     private CreaturesService creaturesService;
 
-    @GetMapping("")
-    public List<Creatures> findAllCreatures(){
-        return creaturesService.findAllCreatures();
+    @GetMapping("/danger")
+    public List<Creatures> findDangerCreatueres(){
+        return creaturesService.findDangerCreaturesList();
+    }
+
+    @GetMapping("/nodanger")
+    public List<Creatures> findNoDangerCreatures(){
+        return creaturesService.findNoDangerCreaturesList();
     }
 }

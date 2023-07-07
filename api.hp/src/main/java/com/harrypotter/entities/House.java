@@ -30,6 +30,12 @@ public class House {
     private String name;
     private String picture;
 
+    //Relation with Hogwarts
+    @ManyToOne
+    @JoinColumn(name = "house_hogwarts")//Name of column (Remember to insert this column in sql)
+    @JsonIgnore
+    private Hogwarts hh;
+
     @OneToMany(mappedBy = "h",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Wizard> students = new HashSet<>();
 }

@@ -17,10 +17,22 @@ public class WizardService {
     public List<Wizard> findAll() {
         return iWizardRepository.findAll();
     }
-    public Wizard findByID(Integer id){
-        return iWizardRepository.findById(id).get();
-    };
-    public Wizard findByName(String name){
+
+    public List<Wizard> findFamilyByName(String name) {
+        return iWizardRepository.findFamilyByName(name);
+    }
+
+    ;
+
+    public Wizard findByName(String name) {
         return iWizardRepository.findByName(name);
+    }
+
+    public List<Wizard> findMortifagosList() {
+        return iWizardRepository.findMortifagosList();
+    }
+
+    public List<Wizard> findAurorList() {
+        return iWizardRepository.findAurorList();
     }
 }

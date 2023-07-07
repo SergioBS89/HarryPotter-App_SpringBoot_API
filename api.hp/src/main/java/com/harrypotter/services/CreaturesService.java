@@ -11,9 +11,13 @@ import java.util.List;
 public class CreaturesService {
 
     @Autowired
-    private ICreaturesRepository iServiceRepository;
+    private ICreaturesRepository iCreaturesRepository;
 
-    public List<Creatures> findAllCreatures(){
-        return iServiceRepository.findAll();
+    public List<Creatures> findDangerCreaturesList(){
+        return iCreaturesRepository.findDangerCreaturesList();
+    }
+
+    public List<Creatures> findNoDangerCreaturesList(){
+        return iCreaturesRepository.findNoDangerCreaturesList();
     }
 }

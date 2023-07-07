@@ -29,4 +29,19 @@ public class WizardController {
     public Wizard findByName(@PathVariable String name){
         return wizardService.findByName(name);
     }
+
+    @GetMapping("/family/{name}")
+    public List<Wizard> findFamilyByName(@PathVariable String name){
+        return wizardService.findFamilyByName(name);
+    }
+
+    @GetMapping("/mortifagos")
+    public List<Wizard> findMortifagosList(){
+        return wizardService.findMortifagosList();
+    }
+
+    @GetMapping("/aurores")
+    public List<Wizard> findAurorList(){
+        return wizardService.findAurorList();
+    }
 }

@@ -31,7 +31,6 @@ public class Wizard {
     private Integer id;
     private String name;
     private Integer age;
-    private String gender;
     @Column(name = "home_address")
     private String homeAddress;
     private String profession;
@@ -44,41 +43,21 @@ public class Wizard {
     private String facemember;
     private String color;
     private String familyname;
+    @JsonIgnore
+    private boolean mortifago;
+    @JsonIgnore
+    private boolean auror;
 
 //Relation with houses
     @ManyToOne
     @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
     private House h;
-//Relation with mortifagos
+
+    //Relation with teachers
     @ManyToOne
-    @JoinColumn(name = "wizards_mortifagos")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "wizards_teachers")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private House m;
-    //Relation with houses
-    @ManyToOne
-    @JoinColumn(name = "wizards_family")//Name of column (Remember to insert this column in sql)
-    @JsonIgnore
-    private House f;
+    private House t;
+
 }
-
-
-//WIZARD
-
-//    @JoinTable(name = "wizard_house", joinColumns = {
-//            @JoinColumn(name = "house_id", referencedColumnName = "id") }, inverseJoinColumns = {
-//            @JoinColumn(name = "wizard_id", referencedColumnName = "id")
-//    })
-//    @ManyToMany(fetch = FetchType.LAZY)
-////    @JsonIgnore
-//    private Set<House> houses = new HashSet<>();
-
-//    @Column(name = "w")
-//    private Integer wizardsHouse; //(This name has to be the same as mapped by
-
-//HOUSE
-//@ManyToMany(fetch = FetchType.LAZY, cascade = {
-//        CascadeType.PERSIST, CascadeType.MERGE
-//}, mappedBy = "houses")
-////@JsonIgnore
-//private Set<Wizard> wizard = new HashSet<>();

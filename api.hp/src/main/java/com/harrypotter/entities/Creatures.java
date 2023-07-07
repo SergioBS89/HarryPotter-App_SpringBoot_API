@@ -21,6 +21,6 @@ public class Creatures {
     private Integer id;
     private String raze;
     private String info;
+    private boolean danger;
     private String picture;
-
 }
