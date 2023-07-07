@@ -25,7 +25,7 @@ public class Horocruxes {
     private String picture;
 
     @ManyToOne
-    @JoinColumn(name = "secret_hollows")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "objects_horocruxes")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagic sh;
+    private MagicObjects hl;
 }

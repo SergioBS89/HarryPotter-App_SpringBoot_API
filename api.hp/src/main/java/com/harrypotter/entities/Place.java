@@ -21,7 +21,6 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hogwarts_id", referencedColumnName = "id")
     private Hogwarts hogwarts;

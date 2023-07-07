@@ -16,17 +16,21 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SpecialObjects {
+@Table(name = "objects")
+public class MagicObjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     //Relation with horocruxes
-    @OneToMany(mappedBy = "sh",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Horocruxes> list_horocruxes;
+    @OneToMany(mappedBy = "hl")
+    private Set<Horocruxes> horocruxesList;
 
     //Relation with reliques
-    @OneToMany(mappedBy = "sr",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Reliques> list_reliques;
+    @OneToMany(mappedBy = "drl")
+    private Set<Reliques> deathReliquesList;
+
+    //Relation with wanders
+    @OneToMany(mappedBy = "wl")
+    private Set<Wander> wandersList;
 }

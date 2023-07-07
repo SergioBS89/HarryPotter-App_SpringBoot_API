@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
@@ -28,8 +30,14 @@ public class Wander {
     private String info;
     private String picture;
 
-/*    @ManyToOne
-    @JoinColumn(name = "material_wander")//Name of column (Remember to insert this column in sql)
+    //Relation with wizard
+    @OneToOne(mappedBy = "wander")
     @JsonIgnore
-    private MaterialMagic mw;*/
+    private Wizard owner;
+
+    //Relation with objects
+    @ManyToOne
+    @JoinColumn(name = "objects_wanders")//Name of column (Remember to insert this column in sql)
+    @JsonIgnore
+    private MagicObjects wl;
 }

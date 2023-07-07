@@ -24,8 +24,12 @@ public class Reliques {
     private String info;
     private String picture;
 
+    //One to one hogwarts
+    @OneToOne(mappedBy = "reliques")
+    private Wizard owner;
+
     @ManyToOne
-    @JoinColumn(name = "special_reliques")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "objects_reliques")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MaterialMagic sr;
+    private MagicObjects drl;
 }

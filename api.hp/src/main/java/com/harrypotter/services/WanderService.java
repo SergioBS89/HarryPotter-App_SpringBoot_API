@@ -16,4 +16,8 @@ public class WanderService {
     public List<Wander> findAll(){
         return iWanderRepository.findAll();
     }
+
+    public Wander findWanderByName(String name) {
+        return iWanderRepository.findWanderByName(name);
+    }
 }

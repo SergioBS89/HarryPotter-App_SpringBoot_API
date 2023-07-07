@@ -43,12 +43,27 @@ public class Wizard {
     private String facemember;
     private String color;
     private String familyname;
+    private String blood;
     @JsonIgnore
     private boolean mortifago;
     @JsonIgnore
     private boolean auror;
+    @JsonIgnore
+    private boolean student;
+    @JsonIgnore
+    private boolean wizard;
 
-//Relation with houses
+    //Relation with wander
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wander_owner_id", referencedColumnName = "id")
+    private Wander wander;
+
+    //Relation with reliques
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "relique_owner_id", referencedColumnName = "id")
+    private Reliques reliques;
+
+    //Relation with houses
     @ManyToOne
     @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
     @JsonIgnore

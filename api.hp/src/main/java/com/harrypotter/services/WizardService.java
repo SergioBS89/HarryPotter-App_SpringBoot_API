@@ -35,4 +35,8 @@ public class WizardService {
     public List<Wizard> findAurorList() {
         return iWizardRepository.findAurorList();
     }
+
+    public List<Wizard> findStudentsList() {
+        return iWizardRepository.findStudentList();
+    }
 }
