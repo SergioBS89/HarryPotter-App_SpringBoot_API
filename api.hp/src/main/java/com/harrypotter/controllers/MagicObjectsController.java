@@ -4,10 +4,13 @@ import com.harrypotter.entities.Horocruxes;
 import com.harrypotter.entities.MagicObjects;
 import com.harrypotter.entities.Reliques;
 import com.harrypotter.entities.Wander;
+import com.harrypotter.services.HorocruxesService;
 import com.harrypotter.services.MagicObjectsService;
+import com.harrypotter.services.ReliquesService;
 import com.harrypotter.services.WanderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,9 +24,10 @@ public class MagicObjectsController {
     private MagicObjectsService magicObjectsService;
     @Autowired
     private WanderService wanderService;
-    //TODO
-//    @Autowired
-//    private HorocruxeService wanderService; ADD HOROCRUXES HERE and RELIQUES
+    @Autowired
+    private HorocruxesService horocruxesService;
+    @Autowired
+    private ReliquesService reliquesService;
 
 
     @GetMapping("")
@@ -36,13 +40,23 @@ public class MagicObjectsController {
         return wanderService.findAll();
     }
 
-//    @GetMapping("/horocruxes")
-//    public List<Horocruxes> findAllHorocruxes(){
-//        return wanderService.findAll();
-//    }
-//
-//    @GetMapping("/reliques")
-//    public List<Reliques> findAllReliques(){
-//        return wanderService.findAll();
-//    }
+    @GetMapping("/horocruxes")
+    public List<Horocruxes> findAllHorocruxes(){
+        return horocruxesService.findAll();
+    }
+
+    @GetMapping("/horocruxes/{name}")
+    public Horocruxes findHorocruxesByName(@PathVariable String name){
+        return horocruxesService.findHorocruxesByName(name);
+    }
+
+    @GetMapping("/reliques")
+    public List<Reliques> findAllReliquesList(){
+        return reliquesService.findAllReliquesList();
+    }
+
+    @GetMapping("/reliques/{name}")
+    public Reliques findReliquesByName(@PathVariable String name){
+        return reliquesService.findReliquesByName(name);
+    }
 }

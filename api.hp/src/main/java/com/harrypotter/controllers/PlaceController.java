@@ -1,10 +1,7 @@
 package com.harrypotter.controllers;
 
-import com.harrypotter.entities.House;
-import com.harrypotter.entities.Place;
-import com.harrypotter.entities.Wizard;
-import com.harrypotter.services.HouseService;
-import com.harrypotter.services.PlaceService;
+import com.harrypotter.entities.*;
+import com.harrypotter.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,29 +11,63 @@ import java.util.List;
 @RestController
 @RequestMapping("/places")
 public class PlaceController {
-    
+
     @Autowired
     private PlaceService placeService;
-
     @Autowired
     private HouseService houseService;
+    @Autowired
+    private WizardService wizardService;
+    @Autowired
+    private QuiddichService quiddichService;
+    @Autowired
+    private PlacesAroundHPWorldService placesAroundHPWorldService;
+    @Autowired
+    private HogwartsPlacesService hogwartsPlacesService;
+
 
     @GetMapping("")
-    public List <Place> findAll(){
+    public List<Place> findAll() {
         return placeService.findAll();
     }
 
-
-    /**
-     * Find Houses by name
-     */
-    @GetMapping("/house/{name}")
-    public House findByName(@PathVariable String name){
+    @GetMapping("/hogwarts/house/{name}")
+    public House findByName(@PathVariable String name) {
         return houseService.findByName(name);
     }
 
-    @GetMapping("/houses")
+    @GetMapping("/hogwarts/houses")
     public List<House> findAllHouses() {
         return houseService.findAll();
+    }
+
+    @GetMapping("/hogwarts/teachers")
+    public List<Wizard> findAllTeachers() {
+        return wizardService.findTeachersList();
+    }
+
+    @GetMapping("/hogwarts/quiddich")
+    public List<Quiddich> findQuiddichList() {
+        return quiddichService.findAll();
+    }
+
+    @GetMapping("/hogwarts/sites")
+    public List<HogwartsPlaces> findHogwartsSites() {
+        return hogwartsPlacesService.findAll();
+    }
+
+    @GetMapping("/hogwarts/sites/{name}")
+    public HogwartsPlaces findHogwartsPlacesByName(@PathVariable String name) {
+        return hogwartsPlacesService.findByName(name);
+    }
+
+    @GetMapping("/world/sites")
+    public List<PlacesAroundHPWorld> findPlacesAroundWorldList() {
+        return placesAroundHPWorldService.findAll();
+    }
+
+    @GetMapping("/world/sites/{name}")
+    public PlacesAroundHPWorld findHPWorldPlacesByName(@PathVariable String name) {
+        return placesAroundHPWorldService.findByName(name);
     }
 }

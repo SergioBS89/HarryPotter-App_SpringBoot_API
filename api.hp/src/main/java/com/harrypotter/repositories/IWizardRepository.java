@@ -24,5 +24,8 @@ public interface IWizardRepository extends JpaRepository<Wizard,Integer>{
 
     @Query(value = "SELECT * FROM wizard WHERE student = true", nativeQuery = true)
     public List<Wizard> findStudentList();
+
+    @Query(value = "SELECT * FROM wizard WHERE wizards_teachers = 1", nativeQuery = true)
+    public List<Wizard> findTeachersList();
     
 }

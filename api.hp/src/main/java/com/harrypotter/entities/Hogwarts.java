@@ -19,16 +19,18 @@ import java.util.Set;
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Hogwarts {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
-    //One to one hogwarts
+    //Realtion with Place
     @JsonIgnore
     @OneToOne(mappedBy = "hogwarts")
     private Place place;
+
+    //ORealtion with Quiddich
+    @OneToOne(mappedBy = "hogwarts")
+    private Quiddich quiddich;
 
     //Relation with teachers
     @OneToMany(mappedBy = "th",cascade = CascadeType.ALL,orphanRemoval = true)
@@ -37,4 +39,8 @@ public class Hogwarts {
     //Relation with houses
     @OneToMany(mappedBy = "hh",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<House> hogwartsHousesList = new HashSet<>();
+
+    //Relation with hogwarts places
+    @OneToMany(mappedBy = "hp",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<HogwartsPlaces> hogwartsPlacesList = new HashSet<>();
 }

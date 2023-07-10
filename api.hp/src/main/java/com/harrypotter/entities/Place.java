@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -24,4 +26,8 @@ public class Place {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hogwarts_id", referencedColumnName = "id")
     private Hogwarts hogwarts;
+
+    //Relation with hp world places
+    @OneToMany(mappedBy = "wpl",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<PlacesAroundHPWorld> HPWorldPlacesList = new HashSet<>();
 }

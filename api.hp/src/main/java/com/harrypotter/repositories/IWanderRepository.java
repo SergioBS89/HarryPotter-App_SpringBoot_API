@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface IWanderRepository extends JpaRepository<Wander,Integer> {
-    @Query(value = "SELECT * FROM wander WHERE name = name", nativeQuery = true)
+    @Query(value = "SELECT * FROM wander WHERE name = :name", nativeQuery = true)
     public Wander findByName(String name);
 
     @Query(value = "SELECT * FROM wander WHERE name = :name", nativeQuery = true)

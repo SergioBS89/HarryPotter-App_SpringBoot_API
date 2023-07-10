@@ -16,7 +16,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reliques {
+@Table(name = "quiddich_objects")
+public class QuiddichObjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,12 +25,9 @@ public class Reliques {
     private String info;
     private String picture;
 
-    //Relation with wizard
-    @OneToOne(mappedBy = "reliques")
-    private Wizard owner;
-
+    //Relation with Quiddich
     @ManyToOne
-    @JoinColumn(name = "objects_reliques")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "quiddich_objects")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MagicObjects drl;
+    private MagicObjects qo;
 }

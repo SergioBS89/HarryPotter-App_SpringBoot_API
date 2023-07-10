@@ -1,44 +1,39 @@
 package com.harrypotter.entities;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.NotFound;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class House {
+public class Quiddich {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
     private String name;
+    private String info;
     private String picture;
 
     //Relation with Hogwarts
-    @ManyToOne
-    @JoinColumn(name = "house_hogwarts")//Name of column (Remember to insert this column in sql)
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
-    private Hogwarts hh;
+    @JoinColumn(name = "hogwarts_id", referencedColumnName = "id")
+    private Hogwarts hogwarts;
 
     //Realtion with Wizard
-    @OneToMany(mappedBy = "h",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Wizard> students = new HashSet<>();
+    @OneToMany(mappedBy = "qo",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<QuiddichObjects> students = new HashSet<>();
 }
-
-
