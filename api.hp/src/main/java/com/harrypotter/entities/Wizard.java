@@ -31,37 +31,32 @@ public class Wizard {
     private Integer id;
     private String name;
     private Integer age;
-    @Column(name = "home_address")
-    private String homeAddress;
-    private String profession;
+    private String rol;
     private String actor;
     private String housename;
     private String housecardpicture;
-    private String houseurl;
     private String bibliography;
     private String picture;
     private String facemember;
     private String color;
     private String familyname;
     private String blood;
-    @JsonIgnore
+    private String patronus;
+    @Column(name = "wander_info")
+    private String wanderInfo;
     private boolean mortifago;
-    @JsonIgnore
-    private boolean auror;
-    @JsonIgnore
+    @Column(name = "animals_fantastics")
+    private boolean animalsFantastics;
     private boolean student;
-    @JsonIgnore
-    private boolean wizard;
+    private boolean others;
+    private boolean teacher;
 
-    //Relation with wander
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "wander_owner_id", referencedColumnName = "id")
-    private Wander wander;
 
     //Relation with reliques
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "relique_owner_id", referencedColumnName = "id")
-    private Reliques reliques;
+    @ManyToOne
+    @JoinColumn(name = "wizards_reliques")//Name of column (Remember to insert this column in sql)
+    @JsonIgnore
+    private House re;
 
     //Relation with houses
     @ManyToOne
@@ -69,10 +64,9 @@ public class Wizard {
     @JsonIgnore
     private House h;
 
-    //Relation with teachers
+    //Relation with objects
     @ManyToOne
-    @JoinColumn(name = "wizards_teachers")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "wizards_wanders")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private House t;
-
+    private MagicObjects sw;
 }

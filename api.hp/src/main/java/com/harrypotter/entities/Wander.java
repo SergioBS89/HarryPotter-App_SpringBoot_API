@@ -30,14 +30,13 @@ public class Wander {
     private String info;
     private String picture;
 
-    //Relation with wizard
-    @OneToOne(mappedBy = "wander")
-    @JsonIgnore
-    private Wizard owner;
-
     //Relation with objects
     @ManyToOne
     @JoinColumn(name = "objects_wanders")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
     private MagicObjects wl;
+
+    //    Relation with Wizard
+    @OneToMany(mappedBy = "sw",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Wizard> owner = new HashSet<>();
 }

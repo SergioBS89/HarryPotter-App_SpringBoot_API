@@ -33,4 +33,12 @@ public class MagicObjects {
     //Relation with wanders
     @OneToMany(mappedBy = "wl")
     private Set<Wander> wandersList;
+
+    //Relation with quiddich
+    @OneToMany(mappedBy = "qul")
+    private Set<QuiddichObjects> quiddichList;
+
+    //Relation with othermagicObjects
+    @OneToMany(mappedBy = "oml")
+    private Set<OtherMagicObjects> othersObjectsList;
 }

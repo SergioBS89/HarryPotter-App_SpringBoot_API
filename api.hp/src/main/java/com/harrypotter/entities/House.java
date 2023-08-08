@@ -2,6 +2,7 @@ package com.harrypotter.entities;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -28,6 +29,10 @@ public class House {
 
     private Integer id;
     private String name;
+    private String info;
+    private String phrase;
+    @Column(name = "who_said_phrase")
+    private String whoSaidPhrase;
     private String picture;
 
     //Relation with Hogwarts
@@ -36,7 +41,7 @@ public class House {
     @JsonIgnore
     private Hogwarts hh;
 
-    //Realtion with Wizard
+//    Realtion with Wizard
     @OneToMany(mappedBy = "h",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<Wizard> students = new HashSet<>();
 }

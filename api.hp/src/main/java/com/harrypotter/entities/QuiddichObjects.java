@@ -29,5 +29,5 @@ public class QuiddichObjects {
     @ManyToOne
     @JoinColumn(name = "quiddich_objects")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private MagicObjects qo;
+    private MagicObjects qul;
 }

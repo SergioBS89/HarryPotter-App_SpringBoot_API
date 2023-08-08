@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
@@ -18,18 +16,19 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Teacher {
+public class SpecialTags {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
+    private String resume;
+    private String phrase;
+    private String life;
+    private String picture;
 
-    @OneToMany(mappedBy = "t",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<Wizard> teachers = new HashSet<>();
-
-    //Relation with Hogwarts
     @ManyToOne
-    @JoinColumn(name = "teacher_hogwarts")//Name of column (Remember to insert this column in sql)
+    @JoinColumn(name = "creatures_tags")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private Hogwarts th;
+    private Hogwarts ct;
 }

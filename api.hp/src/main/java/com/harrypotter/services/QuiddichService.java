@@ -1,8 +1,6 @@
 package com.harrypotter.services;
 
-import com.harrypotter.entities.Horocruxes;
-import com.harrypotter.entities.Quiddich;
-import com.harrypotter.repositories.IHorocruxesRepository;
+import com.harrypotter.entities.QuiddichObjects;
 import com.harrypotter.repositories.IQuiddichRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +13,7 @@ public class QuiddichService {
     @Autowired
     private IQuiddichRepository iQuiddichRepository;
 
-    public List<Quiddich> findAll() {
+    public List<QuiddichObjects> findAll() {
         return iQuiddichRepository.findAll();
     }
 }

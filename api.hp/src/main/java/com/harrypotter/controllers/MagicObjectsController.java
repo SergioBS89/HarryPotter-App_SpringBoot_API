@@ -1,21 +1,15 @@
 package com.harrypotter.controllers;
 
-import com.harrypotter.entities.Horocruxes;
-import com.harrypotter.entities.MagicObjects;
-import com.harrypotter.entities.Reliques;
-import com.harrypotter.entities.Wander;
-import com.harrypotter.services.HorocruxesService;
-import com.harrypotter.services.MagicObjectsService;
-import com.harrypotter.services.ReliquesService;
-import com.harrypotter.services.WanderService;
+import com.harrypotter.entities.*;
+import com.harrypotter.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/objects")
 public class MagicObjectsController {
@@ -28,11 +22,15 @@ public class MagicObjectsController {
     private HorocruxesService horocruxesService;
     @Autowired
     private ReliquesService reliquesService;
+    @Autowired
+    private QuiddichService quiddichService;
+    @Autowired
+    private OthersObjectsService othersObjectsService;
 
 
     @GetMapping("")
-    public List<MagicObjects> findAll(){
-        return magicObjectsService.findAll();
+    public List<MagicObjects> findAllObjects(){
+        return magicObjectsService.findAllObjects();
     }
 
     @GetMapping("/wanders")
@@ -58,5 +56,15 @@ public class MagicObjectsController {
     @GetMapping("/reliques/{name}")
     public Reliques findReliquesByName(@PathVariable String name){
         return reliquesService.findReliquesByName(name);
+    }
+
+    @GetMapping("/quiddich")
+    public List<QuiddichObjects> findAllQuiddichList(){
+        return quiddichService.findAll();
+    }
+
+    @GetMapping("/others/{page}")
+    public Page<OtherMagicObjects> findAllOtherObjects(@PathVariable Integer page){
+        return othersObjectsService.findAll(PageRequest.of(page, 8));
     }
 }

@@ -9,9 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
@@ -19,7 +16,8 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Quiddich {
+@Table(name = "other_objects")
+public class OtherMagicObjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,13 +25,9 @@ public class Quiddich {
     private String info;
     private String picture;
 
-    //Relation with Hogwarts
-    @OneToOne(cascade = CascadeType.ALL)
+    //Relation with MagicObjects
+    @ManyToOne
+    @JoinColumn(name = "other_objects")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    @JoinColumn(name = "hogwarts_id", referencedColumnName = "id")
-    private Hogwarts hogwarts;
-
-    //Realtion with Wizard
-    @OneToMany(mappedBy = "qo",cascade = CascadeType.ALL,orphanRemoval = true)
-    private Set<QuiddichObjects> students = new HashSet<>();
+    private MagicObjects oml;
 }

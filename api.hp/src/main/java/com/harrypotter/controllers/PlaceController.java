@@ -19,8 +19,6 @@ public class PlaceController {
     @Autowired
     private WizardService wizardService;
     @Autowired
-    private QuiddichService quiddichService;
-    @Autowired
     private PlacesAroundHPWorldService placesAroundHPWorldService;
     @Autowired
     private HogwartsPlacesService hogwartsPlacesService;
@@ -41,16 +39,6 @@ public class PlaceController {
         return houseService.findAll();
     }
 
-    @GetMapping("/hogwarts/teachers")
-    public List<Wizard> findAllTeachers() {
-        return wizardService.findTeachersList();
-    }
-
-    @GetMapping("/hogwarts/quiddich")
-    public List<Quiddich> findQuiddichList() {
-        return quiddichService.findAll();
-    }
-
     @GetMapping("/hogwarts/sites")
     public List<HogwartsPlaces> findHogwartsSites() {
         return hogwartsPlacesService.findAll();
@@ -60,7 +48,6 @@ public class PlaceController {
     public HogwartsPlaces findHogwartsPlacesByName(@PathVariable String name) {
         return hogwartsPlacesService.findByName(name);
     }
-
     @GetMapping("/world/sites")
     public List<PlacesAroundHPWorld> findPlacesAroundWorldList() {
         return placesAroundHPWorldService.findAll();
