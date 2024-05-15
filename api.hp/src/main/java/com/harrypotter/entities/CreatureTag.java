@@ -16,8 +16,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SpecialTags {
-
+@Table(name = "creature_tag")
+public class CreatureTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -30,5 +30,5 @@ public class SpecialTags {
     @ManyToOne
     @JoinColumn(name = "creatures_tags")//Name of column (Remember to insert this column in sql)
     @JsonIgnore
-    private Hogwarts ct;
+    private Creature ct;
 }

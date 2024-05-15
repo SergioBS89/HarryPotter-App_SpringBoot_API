@@ -36,7 +36,7 @@ public interface IWizardRepository extends JpaRepository<Wizard,Integer>{
     @Query(value = "SELECT * FROM wizard WHERE teacher = 1", nativeQuery = true)
     public Page<Wizard> findTeachersList(Pageable pageable);
 
-    @Query(value = "SELECT * FROM wizard WHERE others = 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM wizard WHERE others = 1 order by name ASC", nativeQuery = true)
     public Page<Wizard> findOthersList(Pageable pageable);
     
 }

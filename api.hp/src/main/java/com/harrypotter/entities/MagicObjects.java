@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,29 +17,29 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "objects")
+@Table(name = "object")
 public class MagicObjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
+    private String info;
+    private String picture;
+    @Column(name = "is_horocruxe")
+    private Boolean isHorocruxe;
+    @Column(name = "is_hollow")
+    private Boolean isDeathHollow;
+    @Column(name = "is_wander")
+    private Boolean isWander;
+    @Column(name = "is_other")
+    private Boolean isOtherMagicObject;
+    private Boolean isQuiddich;
 
-    //Relation with horocruxes
-    @OneToMany(mappedBy = "hl")
-    private Set<Horocruxes> horocruxesList;
+    //Relation with Wizard
+    @OneToMany(mappedBy = "mo",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Wizard> ownerWander = new HashSet<>();
 
-    //Relation with reliques
-    @OneToMany(mappedBy = "drl")
-    private Set<Reliques> deathReliquesList;
-
-    //Relation with wanders
-    @OneToMany(mappedBy = "wl")
-    private Set<Wander> wandersList;
-
-    //Relation with quiddich
-    @OneToMany(mappedBy = "qul")
-    private Set<QuiddichObjects> quiddichList;
-
-    //Relation with othermagicObjects
-    @OneToMany(mappedBy = "oml")
-    private Set<OtherMagicObjects> othersObjectsList;
+    //Relation with Wizard
+    @OneToMany(mappedBy = "mo",cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Wizard> ownerMagicObject = new HashSet<>();
 }

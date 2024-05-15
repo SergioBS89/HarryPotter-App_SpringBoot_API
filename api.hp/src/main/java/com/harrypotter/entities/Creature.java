@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,18 +13,20 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Creatures {
+public class Creature {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String raze;
     private String resume;
     private String phrase;
-    private String life;
-    private String clasification;
-    private boolean danger;
+    private String classification;
+    private String danger; //To manage styles in front end
     private String picture;
 
+    /**
+     * Relation with Tags
+     */
     @OneToMany(mappedBy = "ct")
-    private Set<SpecialTags> tags = new HashSet<>();
+    private Set<CreatureTag> tags = new HashSet<>();
 }

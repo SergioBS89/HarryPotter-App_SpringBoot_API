@@ -25,7 +25,6 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Wizard {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -34,9 +33,8 @@ public class Wizard {
     private String rol;
     private String actor;
     private String housename;
-    private String housecardpicture;
-    private String bibliography;
     private String picture;
+    private String bibliography;
     private String facemember;
     private String color;
     private String familyname;
@@ -51,22 +49,11 @@ public class Wizard {
     private boolean others;
     private boolean teacher;
 
-
-    //Relation with reliques
-    @ManyToOne
-    @JoinColumn(name = "wizards_reliques")//Name of column (Remember to insert this column in sql)
-    @JsonIgnore
-    private House re;
-
-    //Relation with houses
-    @ManyToOne
-    @JoinColumn(name = "wizards_house")//Name of column (Remember to insert this column in sql)
-    @JsonIgnore
-    private House h;
-
-    //Relation with objects
     @ManyToOne
     @JoinColumn(name = "wizards_wanders")//Name of column (Remember to insert this column in sql)
-    @JsonIgnore
-    private MagicObjects sw;
+    private MagicObjects mw;
+
+    @ManyToOne
+    @JoinColumn(name = "wizards_objects")//Name of column (Remember to insert this column in sql)
+    private MagicObjects mo;
 }

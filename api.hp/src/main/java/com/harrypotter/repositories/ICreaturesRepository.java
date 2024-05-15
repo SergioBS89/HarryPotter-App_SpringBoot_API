@@ -1,17 +1,22 @@
 package com.harrypotter.repositories;
 
-import com.harrypotter.entities.Creatures;
-import com.harrypotter.entities.Wizard;
+import com.harrypotter.entities.Creature;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
+public interface ICreaturesRepository extends JpaRepository<Creature, Integer>{
 
-public interface ICreaturesRepository extends JpaRepository<Creatures, Integer>{
+    @Query(value = "SELECT * FROM creatures order by raze ASC" , nativeQuery = true)
+    public Page<Creature> findAll(Pageable pageable);
 
-    @Query(value = "SELECT * FROM creatures WHERE danger = true", nativeQuery = true)
-    public List<Creatures> findDangerCreaturesList();
+    @Query(value = "SELECT * FROM creatures WHERE danger = 'yes' order by raze ASC", nativeQuery = true)
+    public Page<Creature> findDangerCreaturesList(Pageable page);
 
-    @Query(value = "SELECT * FROM creatures WHERE danger = false", nativeQuery = true)
-    public List<Creatures> findNoDangerCreaturesList();
+    @Query(value = "SELECT * FROM creatures WHERE danger = 'no' order by raze ASC", nativeQuery = true)
+    public Page<Creature> findNoDangerCreaturesList(Pageable page);
+
+    @Query(value = "SELECT * FROM creatures WHERE raze = :raze", nativeQuery = true)
+    public Creature findByRaze(String raze);
 }

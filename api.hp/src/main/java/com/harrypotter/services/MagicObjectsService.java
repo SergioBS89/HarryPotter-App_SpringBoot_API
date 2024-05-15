@@ -7,16 +7,38 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class MagicObjectsService {
 
     @Autowired
     private IMagicObjects iMagicObjects;
 
-    public List<MagicObjects> findAllObjects(){
-        return iMagicObjects.findAll();
+    public Page<MagicObjects> findAllObjects(Pageable pageable){
+        return iMagicObjects.findAll(pageable);
+    }
+
+    public MagicObjects findByName(String name) {
+        return iMagicObjects.findByName(name);
+    }
+
+    public Page<MagicObjects> findHorocruxesList(Pageable pageable){
+        return iMagicObjects.findHorocruxesList(pageable);
+    }
+
+    public Page<MagicObjects> findWandersList(Pageable pageable){
+        return iMagicObjects.findWanderList(pageable);
+    }
+
+    public Page<MagicObjects> findHollows(Pageable pageable){
+        return iMagicObjects.findHollowList(pageable);
+    }
+
+    public Page<MagicObjects> findOthersObjects(Pageable pageable){
+        return iMagicObjects.findOthersObjectsList(pageable);
+    }
+
+    public Page<MagicObjects> findQuddichObjects(Pageable pageable){
+        return iMagicObjects.findQuddichObjectsList(pageable);
     }
 
 }
